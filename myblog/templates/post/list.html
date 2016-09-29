@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for post in posts %}
+        <div class="post">
+            {{ post.date|date:"D d M Y" }} | <strong>Категория:</strong> <a href="{% url 'category_list' id=post.category.id %}">{{post.category}}</a>
+        <h1><a href="{% url 'post_detail' id=post.id %}">{{ post.title }}</a></h1>
+        <p>{{ post.body|truncatewords:150 }}</p>
+        <hr>
+    </div>
+    {% empty %}
+    <h3>Нет постов</h3>
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Назад</a>
+        {% endif %}
+
+        <span class="current">
+            {{ posts.number }} из {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Дальше</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

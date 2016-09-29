@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load comments %}
+
+{% block content %}    
+    <div class="post">
+        <p>Опубликованно: {{ post.date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.body|linebreaksbr }}</p>
+    </div>
+    <hr>
+    <div class="comments">
+    <h3>Комментарии: </h3>
+    	{% get_comment_count for post as comment_count %}
+    	{% render_comment_list for post %}
+    	<hr>
+    	{% render_comment_form for post %}
+    </div>
+{% endblock %}

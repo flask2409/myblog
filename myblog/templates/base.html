@@ -1,0 +1,32 @@
+
+{% load sidebar %}
+{% load staticfiles %}
+<html>
+    <head>
+        <title>мой блог</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+	<body>
+        <div class="page-header">
+            <h1><a href="/">My Django blog</a></h1>
+        </div>
+         <div class="content container">
+            <div class="row">
+                <div class="col-md-9">
+                 	{% block content %}
+                    
+                 	{% endblock %}
+                </div>
+                <div class="col-md-1">
+                 	{% sidebar %}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </body>
+</html>
